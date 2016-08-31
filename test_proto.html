@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<script type="text/javascript">
+
+function a(c){
+    this.b = c;
+    this.d =function(){
+        alert(this.b);
+    }
+}
+var obj  = new a('test');
+alert(obj.constructor);//function a(){}
+alert(obj.prototype.constructor);
+alert(a.prototype.constructor);//function a(){}
+
+
+    function SuperType() {
+        this.property = true;
+    }
+
+    SuperType.prototype.getSuperValue = function() {
+      return this.property;
+    };
+
+    function SubType() {
+        this.subproperty = false;
+    }
+
+    //ºÃ≥–¡ÀSuperType
+    SubType.prototype = new SuperType();
+ //   SubType.prototype.getSubValue = function() {
+ //       return this.subproperty;
+ //   };
+
+    var instance = new SubType();
+    alert(instance.getSuperValue()); //true
+
+</script>
+
+</body>
+</html>
